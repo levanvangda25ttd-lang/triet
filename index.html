@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ôn Thi Triết Học Mác–Lênin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+  :root {
+    --red: #C0392B;
+    --red-light: #FADBD8;
+    --gold: #D4AC0D;
+    --dark: #1A1A2E;
+    --mid: #2C3E50;
+    --bg: #F8F6F1;
+    --card: #FFFFFF;
+    --text: #2C2C2C;
+    --muted: #6B7280;
+    --green: #1A6B3A;
+    --green-light: #D5E8DA;
+    --blue: #1B4F8A;
+    --blue-light: #D6E4F0;
+    --purple: #6B2FA0;
+    --purple-light: #E8D5F5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  header {
+    background: var(--dark);
+    color: white;
+    padding: 40px 24px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(192,57,43,0.07) 30px, rgba(192,57,43,0.07) 60px);
+  }
+  header .star { font-size: 2rem; margin-bottom: 8px; }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    letter-spacing: 0.5px;
+    position: relative;
+  }
+  header p {
+    color: #B0BEC5;
+    margin-top: 6px;
+    font-size: 0.9rem;
+    position: relative;
+  }
+  .badge-row {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-top: 16px; position: relative;
+  }
+  .badge {
+    background: var(--red); color: white;
+    padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+  }
+  .badge.gold { background: var(--gold); color: var(--dark); }
+
+  nav {
+    background: white;
+    border-bottom: 2px solid #E5E7EB;
+    padding: 12px 24px;
+    display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--mid);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid #D1D5DB;
+    transition: all 0.2s;
+  }
+  nav a:hover, nav a.active { background: var(--red); color: white; border-color: var(--red); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  .chapter {
+    background: var(--card);
+    border-radius: 16px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .ch-header {
+    padding: 20px 24px;
+    display: flex; align-items: center; gap: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .ch-header:hover { filter: brightness(0.97); }
+  .ch-num {
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 800; flex-shrink: 0;
+  }
+  .ch-title h2 { font-size: 1rem; font-weight: 700; }
+  .ch-title p { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .ch-arrow { margin-left: auto; font-size: 1.2rem; transition: transform 0.3s; }
+  .ch-arrow.open { transform: rotate(180deg); }
+
+  .ch-body { display: none; padding: 0 24px 24px; }
+  .ch-body.open { display: block; }
+
+  .section-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--red);
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--red-light);
+  }
+
+  .concept-block {
+    background: #F9FAFB;
+    border-left: 4px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .concept-block .term {
+    font-weight: 700; color: var(--blue);
+    font-size: 0.95rem; margin-bottom: 4px;
+  }
+  .concept-block .def { font-size: 0.88rem; color: var(--text); }
+
+  .example-box {
+    background: var(--green-light);
+    border: 1px solid #A8D5B5;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0 16px;
+    font-size: 0.85rem;
+  }
+  .example-box .ex-label {
+    font-weight: 700; color: var(--green);
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 5px;
+  }
+
+  .key-point {
+    background: var(--red-light);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 0.85rem;
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .key-point::before { content: '🔑'; flex-shrink: 0; }
+
+  .tip-box {
+    background: var(--purple-light);
+    border: 1px solid #C39BD3;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 0.84rem;
+  }
+  .tip-box .tip-label {
+    font-weight: 700; color: var(--purple);
+    font-size: 0.78rem; margin-bottom: 5px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin: 10px 0;
+  }
+  th {
+    background: var(--dark);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 0.8rem;
+  }
+  td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #E5E7EB;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #F9FAFB; }
+
+  .quiz-btn {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+  .quiz-btn:hover { background: #A93226; }
+
+  .quiz-section { margin-top: 20px; }
+  .quiz-q {
+    background: #F0F4FF;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  .quiz-options { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .quiz-opt {
+    background: white;
+    border: 1.5px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.83rem;
+    font-weight: 400;
+    text-align: left;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    transition: all 0.15s;
+  }
+  .quiz-opt:hover { border-color: var(--blue); background: var(--blue-light); }
+  .quiz-opt.correct { background: var(--green-light); border-color: var(--green); color: var(--green); font-weight: 600; }
+  .quiz-opt.wrong { background: var(--red-light); border-color: var(--red); color: var(--red); }
+  .quiz-result { font-size: 0.82rem; margin-top: 6px; padding: 6px 10px; border-radius: 6px; }
+
+  /* color themes per chapter */
+  .ch1 .ch-header { background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%); color: white; }
+  .ch1 .ch-num { background: var(--red); color: white; }
+  .ch2 .ch-header { background: linear-gradient(135deg, #1B4F8A 0%, #154360 100%); color: white; }
+  .ch2 .ch-num { background: #3498DB; color: white; }
+  .ch3 .ch-header { background: linear-gradient(135deg, #1A6B3A 0%, #145A32 100%); color: white; }
+  .ch3 .ch-num { background: #27AE60; color: white; }
+  .ch4 .ch-header { background: linear-gradient(135deg, #6B2FA0 0%, #512E7A 100%); color: white; }
+  .ch4 .ch-num { background: #9B59B6; color: white; }
+  .ch5 .ch-header { background: linear-gradient(135deg, #A04000 0%, #784212 100%); color: white; }
+  .ch5 .ch-num { background: #E67E22; color: white; }
+  .ch6 .ch-header { background: linear-gradient(135deg, #1A5276 0%, #0E3D57 100%); color: white; }
+  .ch6 .ch-num { background: #2980B9; color: white; }
+  .ch7 .ch-header { background: linear-gradient(135deg, #C0392B 0%, #922B21 100%); color: white; }
+  .ch7 .ch-num { background: #E74C3C; color: white; }
+
+  .ch-title p { color: rgba(255,255,255,0.7); }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid #E5E7EB;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="star">☭</div>
+  <h1>ÔN THI TRIẾT HỌC MÁC–LÊNIN</h1>
+  <p>Tóm tắt chi tiết · Ví dụ dễ hiểu · Câu hỏi trắc nghiệm</p>
+  <div class="badge-row">
+    <span class="badge">7 Chương</span>
+    <span class="badge gold">Có ví dụ thực tế</span>
+    <span class="badge">Câu hỏi ôn tập</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#ch1">Ch.1 Khái luận</a>
+  <a href="#ch2">Ch.2 Vật chất & Ý thức</a>
+  <a href="#ch3">Ch.3 Phép biện chứng</a>
+  <a href="#ch4">Ch.4 Nhận thức luận</a>
+  <a href="#ch5">Ch.5 CNDVLS & CSHT</a>
+  <a href="#ch6">Ch.6 Giai cấp & Nhà nước</a>
+  <a href="#ch7">Ch.7 Ý thức xã hội</a>
+</nav>
+
+<main>
+
+<!-- CHAPTER 1 -->
+<div class="chapter ch1" id="ch1">
+  <div class="ch-header" onclick="toggle(this)">
+    <div class="ch-num">1</div>
+    <div class="ch-title">
+      <h2>KHÁI LUẬN VỀ TRIẾT HỌC VÀ TRIẾT HỌC MÁC–LÊNIN</h2>
+      <p>Bản chất · Vấn đề cơ bản · Sự ra đời & phát triển</p>
+    </div>
+    <div class="ch-arrow">▼</div>
+  </div>
+  <div class="ch-body">
+
+    <div class="section-title">I. Triết học là gì?</div>
+
+    <div class="concept-block">
+      <div class="term">Định nghĩa Triết học</div>
+      <div class="def">Triết học là hệ thống tri thức lý luận chung nhất của con người về thế giới (tự nhiên, xã hội, tư duy); về vị trí, vai trò của con người trong thế giới đó.</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ dễ hiểu</div>
+      Khoa học tự nhiên nghiên cứu từng lĩnh vực cụ thể (vật lý học nghiên cứu vật chất, sinh học nghiên cứu sinh vật...). Còn triết học hỏi những câu hỏi <em>tổng quát nhất</em>: "Thế giới tồn tại như thế nào?", "Con người biết được gì?", "Cái gì có trước — vật chất hay ý thức?"
+    </div>
+
+    <div class="section-title">II. Vấn đề cơ bản của Triết học</div>
+
+    <div class="concept-block">
+      <div class="term">Vấn đề cơ bản của Triết học</div>
+      <div class="def">Là quan hệ giữa <strong>vật chất (tồn tại)</strong> và <strong>ý thức (tư duy)</strong>. Gồm 2 mặt:<br>
+      • <strong>Mặt thứ nhất (bản thể luận):</strong> Cái gì có trước — vật chất hay ý thức? Cái nào quyết định cái nào?<br>
+      • <strong>Mặt thứ hai (nhận thức luận):</strong> Con người có khả năng nhận thức được thế giới không?</div>
+    </div>
+
+    <table>
+      <tr><th>Trường phái</th><th>Quan điểm</th><th>Đại diện</th></tr>
+      <tr><td><strong>Duy vật</strong></td><td>Vật chất có trước, ý thức có sau; vật chất quyết định ý thức</td><td>Mác, Ăngghen, Lênin</td></tr>
+      <tr><td><strong>Duy tâm</strong></td><td>Ý thức (tinh thần) có trước, quyết định vật chất</td><td>Platon, Hegel, Berkeley</td></tr>
+      <tr><td><strong>Nhị nguyên</strong></td><td>Vật chất và ý thức song song tồn tại, không cái nào quyết định cái nào</td><td>Descartes</td></tr>
+    </table>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ phân biệt Duy vật – Duy tâm</div>
+      <strong>Duy vật:</strong> Não bộ (vật chất) sinh ra ý nghĩ. Khi não bị tổn thương → suy nghĩ, cảm xúc thay đổi. Vật chất quyết định ý thức.<br>
+      <strong>Duy tâm:</strong> Thượng đế (ý niệm) tạo ra vạn vật. Mọi thứ chỉ là "hiện tượng" trong tâm trí con người.
+    </div>
+
+    <div class="section-title">III. Các hình thức Duy vật</div>
+
+    <table>
+      <tr><th>Hình thức</th><th>Thời kỳ</th><th>Đặc điểm</th></tr>
+      <tr><td>Duy vật chất phác (ngây thơ)</td><td>Cổ đại</td><td>Đồng nhất vật chất với yếu tố cụ thể: nước, lửa, đất, không khí</td></tr>
+      <tr><td>Duy vật siêu hình</td><td>TK XVII–XVIII</td><td>Thừa nhận vật chất nhưng hiểu sự vật tách rời, bất biến, không có mâu thuẫn nội tại</td></tr>
+      <tr><td>Duy vật biện chứng</td><td>TK XIX–nay</td><td>Vật chất luôn vận động, phát triển theo quy luật mâu thuẫn biện chứng</td></tr>
+    </table>
+
+    <div class="section-title">IV. Sự ra đời Triết học Mác–Lênin</div>
+
+    <div class="concept-block">
+      <div class="term">3 nguồn gốc lý luận</div>
+      <div class="def">
+        1. <strong>Triết học cổ điển Đức</strong> (đặc biệt là phép biện chứng của Hegel và chủ nghĩa duy vật của Feuerbach)<br>
+        2. <strong>Kinh tế chính trị học cổ điển Anh</strong> (Adam Smith, David Ricardo)<br>
+        3. <strong>Chủ nghĩa xã hội không tưởng Pháp</strong> (Saint-Simon, Fourier, Owen)
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="term">2 nguồn gốc tự nhiên – xã hội</div>
+      <div class="def">
+        • <strong>Tự nhiên:</strong> Khoa học tự nhiên phát triển mạnh (thuyết tế bào, thuyết tiến hóa Darwin, định luật bảo toàn năng lượng) → đòi hỏi thế giới quan duy vật biện chứng<br>
+        • <strong>Xã hội:</strong> Mâu thuẫn giai cấp tư sản–vô sản ngày càng gay gắt → giai cấp vô sản cần vũ khí lý luận
+      </div>
+    </div>
+
+    <div class="key-point">Mác "lộn ngược" Hegel: lấy cái hạt nhân hợp lý (phép biện chứng) ra khỏi cái vỏ thần bí (duy tâm), kết hợp với chủ nghĩa duy vật để tạo ra <strong>chủ nghĩa duy vật biện chứng</strong>.</div>
+
+    <div class="section-title">V. Các giai đoạn phát triển</div>
+    <table>
+      <tr><th>Giai đoạn</th><th>Thời gian</th><th>Dấu mốc chính</th></tr>
+      <tr><td>Hình thành</td><td>1840–1848</td><td>Hệ tư tưởng Đức (1845–46); Tuyên ngôn Đảng Cộng sản (1848)</td></tr>
+      <tr><td>Bổ sung, phát triển</td><td>1848–1895</td><td>Tư bản (1867); Chống Đuyrinh (1878); Biện chứng của tự nhiên</td></tr>
+      <tr><td>Lênin phát triển</td><td>1895–1924</td><td>Chủ nghĩa duy vật và chủ nghĩa kinh nghiệm phê phán (1909); Bút ký triết học (1915)</td></tr>
+    </table>
+
+    <button class="quiz-btn" onclick="showQuiz('q1')">📝 Câu hỏi trắc nghiệm Chương 1</button>
+    <div id="q1" class="quiz-section" style="display:none">
+      <div class="quiz-q">
+        <div>Câu 1: Vấn đề cơ bản của triết học có mấy mặt?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q1a')">A. 1 mặt</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q1a')">B. 2 mặt</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q1a')">C. 3 mặt</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q1a')">D. 4 mặt</button>
+        </div>
+        <div id="q1a" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 2: Trường phái triết học nào cho rằng "ý thức có trước, quyết định vật chất"?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q1b')">A. Chủ nghĩa duy vật biện chứng</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q1b')">B. Chủ nghĩa duy tâm</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q1b')">C. Chủ nghĩa duy vật siêu hình</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q1b')">D. Chủ nghĩa nhị nguyên</button>
+        </div>
+        <div id="q1b" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 3: "Tuyên ngôn Đảng Cộng sản" được công bố năm nào?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q1c')">A. 1845</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q1c')">B. 1867</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q1c')">C. 1848</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q1c')">D. 1895</button>
+        </div>
+        <div id="q1c" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 2 -->
+<div class="chapter ch2" id="ch2">
+  <div class="ch-header" onclick="toggle(this)">
+    <div class="ch-num">2</div>
+    <div class="ch-title">
+      <h2>CHỦ NGHĨA DUY VẬT BIỆN CHỨNG: VẬT CHẤT VÀ Ý THỨC</h2>
+      <p>Định nghĩa vật chất · Vận động · Không gian & Thời gian · Ý thức</p>
+    </div>
+    <div class="ch-arrow">▼</div>
+  </div>
+  <div class="ch-body">
+
+    <div class="section-title">I. Quan niệm duy vật biện chứng về vật chất</div>
+
+    <div class="concept-block">
+      <div class="term">Định nghĩa Vật chất (Lênin, 1909)</div>
+      <div class="def">"Vật chất là một phạm trù triết học dùng để chỉ <strong>thực tại khách quan</strong> được đem lại cho con người trong cảm giác, được cảm giác của chúng ta chép lại, chụp lại, phản ánh, và tồn tại <strong>không lệ thuộc vào cảm giác</strong>."</div>
+    </div>
+
+    <div class="key-point">Điểm quan trọng nhất: Thuộc tính cơ bản của vật chất là <strong>tồn tại khách quan</strong> — tồn tại ngoài và độc lập với ý thức con người.</div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ</div>
+      Mặt trăng tồn tại dù không ai nhìn vào nó. Virus COVID-19 tồn tại thực sự trước khi con người phát hiện ra nó. Đây là "thực tại khách quan" → là vật chất.
+    </div>
+
+    <div class="section-title">II. Vận động — phương thức tồn tại của vật chất</div>
+
+    <div class="concept-block">
+      <div class="term">Vận động là gì?</div>
+      <div class="def">Theo Ăngghen, vận động là <strong>mọi sự thay đổi và mọi quá trình diễn ra trong vũ trụ</strong>, từ thay đổi vị trí đơn giản đến tư duy của con người. Vận động là <strong>thuộc tính cố hữu</strong>, là <strong>phương thức tồn tại</strong> của vật chất.</div>
+    </div>
+
+    <table>
+      <tr><th>Hình thức vận động</th><th>Ví dụ cụ thể</th><th>Khoa học nghiên cứu</th></tr>
+      <tr><td>1. Cơ học</td><td>Viên bi lăn, trái đất quay</td><td>Cơ học</td></tr>
+      <tr><td>2. Vật lý</td><td>Nhiệt, điện, ánh sáng, từ trường</td><td>Vật lý học</td></tr>
+      <tr><td>3. Hóa học</td><td>Đốt cháy, phản ứng hóa học</td><td>Hóa học</td></tr>
+      <tr><td>4. Sinh học</td><td>Trao đổi chất, sinh trưởng, di truyền</td><td>Sinh học</td></tr>
+      <tr><td>5. Xã hội</td><td>Cách mạng, kinh tế, lịch sử loài người</td><td>KHXH</td></tr>
+    </table>
+
+    <div class="key-point">Các hình thức vận động cao hơn <strong>bao hàm</strong> hình thức thấp hơn nhưng <strong>không đồng nhất</strong> với nó. Ví dụ: con người vận động xã hội nhưng cũng có vận động sinh học (ăn, ngủ), vật lý (nhiệt độ cơ thể)...</div>
+
+    <div class="concept-block">
+      <div class="term">Đứng im (tĩnh tại)</div>
+      <div class="def">Đứng im chỉ là <strong>vận động trong thế cân bằng</strong>, là trạng thái đặc biệt của vận động. Đứng im có tính <strong>tạm thời, tương đối</strong>; còn vận động là <strong>tuyệt đối, vĩnh viễn</strong>.</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ: Đứng im chỉ là tương đối</div>
+      Tòa nhà đứng yên trước mắt ta, nhưng thực ra: các phân tử vật chất trong tường vẫn dao động nhiệt; trái đất tự quay; trái đất quay quanh mặt trời → không có gì thực sự "đứng yên hoàn toàn".
+    </div>
+
+    <div class="section-title">III. Không gian và Thời gian</div>
+
+    <div class="concept-block">
+      <div class="term">Không gian & Thời gian</div>
+      <div class="def">
+        <strong>Không gian</strong>: hình thức tồn tại của vật chất, phản ánh thuộc tính của các sự vật (quảng tính, vị trí, thứ tự sắp xếp). Ba chiều (dài, rộng, cao).<br>
+        <strong>Thời gian</strong>: hình thức tồn tại của vật chất vận động, phản ánh trình tự diễn ra, độ lâu dài của các quá trình. Một chiều (quá khứ→hiện tại→tương lai).<br>
+        Cả hai đều <strong>khách quan, gắn liền với vật chất</strong>, không thể tách rời nhau.
+      </div>
+    </div>
+
+    <div class="section-title">IV. Ý thức — nguồn gốc và bản chất</div>
+
+    <div class="concept-block">
+      <div class="term">Nguồn gốc của Ý thức</div>
+      <div class="def">
+        <strong>Nguồn gốc tự nhiên:</strong> Bộ óc người (vật chất được tổ chức cao) + sự phản ánh thế giới khách quan vào bộ óc.<br>
+        <strong>Nguồn gốc xã hội:</strong> Lao động + Ngôn ngữ. Lao động làm con người tiếp xúc, cải biến thế giới → hình thành ý thức. Ngôn ngữ là "vỏ vật chất" của tư duy.
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ về nguồn gốc xã hội của ý thức</div>
+      Những đứa trẻ lớn lên trong môi trường tách biệt hoàn toàn (trường hợp trẻ em được sói nuôi) không phát triển được ngôn ngữ và ý thức người bình thường, dù có bộ óc bình thường → chứng minh lao động + ngôn ngữ (môi trường xã hội) quyết định sự phát triển ý thức.
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Bản chất của Ý thức</div>
+      <div class="def">
+        1. Ý thức là <strong>sự phản ánh thế giới khách quan vào bộ óc người</strong>, là hình ảnh chủ quan của thế giới khách quan.<br>
+        2. Ý thức có tính <strong>sáng tạo</strong> — không phải phản ánh thụ động mà là phản ánh chủ động, có chọn lọc.<br>
+        3. Ý thức mang <strong>bản chất xã hội</strong>.
+      </div>
+    </div>
+
+    <div class="section-title">V. Quan hệ Vật chất – Ý thức</div>
+
+    <div class="concept-block">
+      <div class="term">Nguyên lý cơ bản</div>
+      <div class="def">
+        • Vật chất <strong>quyết định</strong> ý thức: vật chất có trước, ý thức có sau; ý thức là sản phẩm của vật chất.<br>
+        • Ý thức có tính <strong>độc lập tương đối</strong> và <strong>tác động trở lại</strong> vật chất: ý thức đúng đắn thúc đẩy vật chất phát triển; ý thức sai lệch kìm hãm sự phát triển.
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ thực tiễn</div>
+      <strong>Vật chất quyết định ý thức:</strong> Một nước nghèo (điều kiện kinh tế thấp = vật chất) → người dân có xu hướng lo trước mắt, tư duy ngắn hạn (ý thức).<br><br>
+      <strong>Ý thức tác động lại vật chất:</strong> Đường lối đổi mới đúng đắn của Đảng (ý thức) → kinh tế Việt Nam phát triển mạnh sau 1986 (vật chất).
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Ý NGHĨA PHƯƠNG PHÁP LUẬN (thường ra thi)</div>
+      <strong>Tôn trọng khách quan + phát huy tính năng động chủ quan.</strong> Phải xuất phát từ thực tế (vật chất), không chủ quan duy ý chí; đồng thời phải phát huy sáng kiến, ý thức tích cực của con người.
+    </div>
+
+    <button class="quiz-btn" onclick="showQuiz('q2')">📝 Câu hỏi trắc nghiệm Chương 2</button>
+    <div id="q2" class="quiz-section" style="display:none">
+      <div class="quiz-q">
+        <div>Câu 1: Thuộc tính cơ bản nhất của vật chất theo quan điểm Mác–Lênin là?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q2a')">A. Có khối lượng</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q2a')">B. Tồn tại khách quan, độc lập với ý thức</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q2a')">C. Chiếm không gian</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q2a')">D. Có thể nhìn thấy được</button>
+        </div>
+        <div id="q2a" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 2: Theo Mác–Lênin, nguồn gốc xã hội của ý thức bao gồm?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q2b')">A. Bộ óc người và thế giới khách quan</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q2b')">B. Lao động và ngôn ngữ</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q2b')">C. Gene di truyền và môi trường</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q2b')">D. Giáo dục và văn hóa</button>
+        </div>
+        <div id="q2b" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 3: Nhận định nào ĐÚNG về đứng im theo quan điểm biện chứng?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q2c')">A. Đứng im là trạng thái tuyệt đối của vật chất</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q2c')">B. Vận động và đứng im đều tuyệt đối</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q2c')">C. Đứng im là tương đối, vận động là tuyệt đối</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q2c')">D. Đứng im là phủ định của vận động</button>
+        </div>
+        <div id="q2c" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 3 -->
+<div class="chapter ch3" id="ch3">
+  <div class="ch-header" onclick="toggle(this)">
+    <div class="ch-num">3</div>
+    <div class="ch-title">
+      <h2>PHÉP BIỆN CHỨNG DUY VẬT</h2>
+      <p>2 nguyên lý · 3 quy luật · 6 cặp phạm trù</p>
+    </div>
+    <div class="ch-arrow">▼</div>
+  </div>
+  <div class="ch-body">
+
+    <div class="section-title">I. Hai nguyên lý cơ bản</div>
+
+    <div class="concept-block">
+      <div class="term">1. Nguyên lý về mối liên hệ phổ biến</div>
+      <div class="def">Mọi sự vật, hiện tượng trong thế giới đều có <strong>mối liên hệ</strong> với nhau, quy định, tác động lẫn nhau, không cô lập, tách rời nhau. Mối liên hệ có tính <strong>khách quan, phổ biến, đa dạng</strong>.</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ</div>
+      Khi Mỹ tăng lãi suất → ảnh hưởng đến tỷ giá USD/VND → ảnh hưởng đến xuất nhập khẩu Việt Nam → ảnh hưởng đến giá hàng trong nước. Mọi thứ đều liên hệ!
+    </div>
+
+    <div class="concept-block">
+      <div class="term">2. Nguyên lý về sự phát triển</div>
+      <div class="def">Mọi sự vật hiện tượng đều không ngừng <strong>vận động và phát triển</strong>. Phát triển là vận động đi lên từ thấp đến cao, từ đơn giản đến phức tạp, từ chưa hoàn thiện đến hoàn thiện hơn. Phát triển có tính <strong>khách quan, phổ biến, đa dạng, phức tạp</strong>.</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Phân biệt: Vận động ≠ Phát triển</div>
+      Phát triển là một loại vận động (vận động đi lên). Không phải mọi vận động đều là phát triển. Ví dụ: quả bóng lăn qua lăn lại là vận động nhưng không phải phát triển.
+    </div>
+
+    <div class="section-title">II. Ba quy luật cơ bản</div>
+
+    <div class="concept-block">
+      <div class="term">Quy luật 1: Mâu thuẫn (Quy luật thống nhất và đấu tranh của các mặt đối lập)</div>
+      <div class="def">
+        <strong>Nội dung:</strong> Mọi sự vật đều chứa đựng những mặt đối lập. Sự <strong>thống nhất</strong> và <strong>đấu tranh</strong> của các mặt đối lập là nguồn gốc, động lực của mọi vận động phát triển.<br>
+        <strong>Các khái niệm chính:</strong><br>
+        • <em>Mâu thuẫn:</em> hai mặt đối lập trong một sự vật, vừa thống nhất vừa đấu tranh nhau<br>
+        • <em>Thống nhất:</em> hai mặt đối lập nương tựa nhau, không cái nào tồn tại được nếu thiếu cái kia<br>
+        • <em>Đấu tranh:</em> hai mặt đối lập bài trừ, phủ định nhau → dẫn đến sự chuyển hóa
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ quy luật mâu thuẫn</div>
+      <strong>Trong kinh tế thị trường:</strong> Cung và Cầu là hai mặt đối lập. Chúng thống nhất (cùng tạo nên thị trường) và đấu tranh (khi cung > cầu, giá giảm; cung < cầu, giá tăng) → thúc đẩy sản xuất phát triển.<br><br>
+      <strong>Trong sinh vật:</strong> Đồng hóa và dị hóa vừa đối lập vừa thống nhất → sinh vật sinh trưởng.
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Quy luật 2: Lượng – Chất (Quy luật chuyển hóa từ những thay đổi về lượng thành những thay đổi về chất và ngược lại)</div>
+      <div class="def">
+        • <strong>Chất:</strong> tính quy định khách quan vốn có của sự vật, phân biệt sự vật này với sự vật khác<br>
+        • <strong>Lượng:</strong> tính quy định về mặt số lượng, quy mô, tốc độ, trình độ...<br>
+        • <strong>Độ:</strong> giới hạn mà trong đó sự thay đổi về lượng chưa dẫn đến thay đổi về chất<br>
+        • <strong>Điểm nút:</strong> điểm giới hạn mà tại đó lượng đã đủ để tạo ra sự thay đổi về chất<br>
+        • <strong>Bước nhảy:</strong> quá trình chuyển hóa từ chất cũ sang chất mới
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ quy luật lượng-chất</div>
+      <strong>Đun nước:</strong> Nhiệt độ (lượng) tăng dần từ 0°C → 99°C, nước vẫn là chất lỏng (chất không đổi). Đến 100°C (điểm nút) → nước bốc hơi thành hơi nước (chất mới) = bước nhảy.<br><br>
+      <strong>Học tập:</strong> Mỗi ngày học thêm kiến thức (lượng tăng dần). Đến một lúc, bạn "ngộ ra" và hiểu sâu vấn đề (chất thay đổi) = bước nhảy về nhận thức.
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Quy luật 3: Phủ định của phủ định</div>
+      <div class="def">
+        Sự phát triển diễn ra theo đường <strong>xoáy ốc</strong>: sự vật phủ định bản thân → bị phủ định → xuất hiện sự vật mới cao hơn, có kế thừa những yếu tố tích cực của sự vật cũ.<br>
+        <strong>Phủ định biện chứng</strong> khác với phủ định siêu hình: không xóa bỏ hoàn toàn mà <strong>kế thừa và vượt qua</strong> (Aufheben).
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ quy luật phủ định của phủ định</div>
+      <strong>Hạt lúa → cây lúa → bông lúa (nhiều hạt):</strong> Hạt lúa bị "phủ định" để trở thành cây lúa; cây lúa bị "phủ định" cho ra bông lúa — nhưng bông lúa chứa hàng chục hạt lúa, cao hơn điểm xuất phát.<br><br>
+      <strong>Lịch sử xã hội:</strong> Xã hội nguyên thủy (chưa có giai cấp) → có giai cấp → xã hội cộng sản (không còn giai cấp nhưng ở trình độ cao hơn nhiều).
+    </div>
+
+    <div class="section-title">III. Sáu cặp phạm trù cơ bản</div>
+
+    <table>
+      <tr><th>Cặp phạm trù</th><th>Nội dung cốt lõi</th><th>Ví dụ</th></tr>
+      <tr><td><strong>Cái chung – Cái riêng</strong></td><td>Cái chung tồn tại trong cái riêng; cái riêng chứa đựng cái chung nhưng phong phú hơn</td><td>Con người (cái chung) → người Việt Nam (cái riêng)</td></tr>
+      <tr><td><strong>Nguyên nhân – Kết quả</strong></td><td>Nguyên nhân sinh ra trước kết quả; kết quả có thể trở thành nguyên nhân mới</td><td>Làm việc chăm chỉ (NN) → thành công (KQ) → có thêm cơ hội mới (NN mới)</td></tr>
+      <tr><td><strong>Tất nhiên – Ngẫu nhiên</strong></td><td>Tất nhiên quyết định xu hướng phát triển; ngẫu nhiên làm cho tất nhiên xảy ra nhanh hay chậm</td><td>Cách mạng xã hội là tất nhiên; thời điểm, hình thức nổ ra là ngẫu nhiên</td></tr>
+      <tr><td><strong>Nội dung – Hình thức</strong></td><td>Nội dung quyết định hình thức; hình thức tác động trở lại nội dung</td><td>Nội dung thơ (tình cảm, tư tưởng) → chọn thể thơ (hình thức) phù hợp</td></tr>
+      <tr><td><strong>Bản chất – Hiện tượng</strong></td><td>Bản chất sâu hơn, bền vững hơn; hiện tượng phong phú hơn, có thể xuyên tạc bản chất</td><td>Bản chất của chủ nghĩa tư bản là bóc lột; hiện tượng có thể che giấu qua "lương bổng"</td></tr>
+      <tr><td><strong>Khả năng – Hiện thực</strong></td><td>Hiện thực là cái đang tồn tại; khả năng là cái có thể trở thành hiện thực</td><td>Hạt giống (khả năng) → cây (hiện thực) khi có đất, nước, ánh sáng</td></tr>
+    </table>
+
+    <button class="quiz-btn" onclick="showQuiz('q3')">📝 Câu hỏi trắc nghiệm Chương 3</button>
+    <div id="q3" class="quiz-section" style="display:none">
+      <div class="quiz-q">
+        <div>Câu 1: Nguồn gốc, động lực của mọi vận động phát triển theo phép biện chứng là?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, true, 'q3a')">A. Mâu thuẫn — thống nhất và đấu tranh của các mặt đối lập</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q3a')">B. Sự thay đổi về lượng dẫn đến thay đổi về chất</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q3a')">C. Phủ định biện chứng</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q3a')">D. Mối liên hệ phổ biến</button>
+        </div>
+        <div id="q3a" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 2: "Điểm nút" trong quy luật lượng–chất là?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q3b')">A. Quá trình chuyển hóa từ chất cũ sang chất mới</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q3b')">B. Giới hạn mà thay đổi lượng chưa làm thay đổi chất</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q3b')">C. Điểm giới hạn mà tại đó thay đổi lượng tất yếu dẫn đến thay đổi chất</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q3b')">D. Sự tổng hợp của lượng và chất</button>
+        </div>
+        <div id="q3b" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 3: Sự phát triển theo quy luật phủ định của phủ định diễn ra theo hình dạng?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q3c')">A. Đường thẳng đi lên</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q3c')">B. Đường tròn quay lại điểm xuất phát</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q3c')">C. Đường xoáy ốc</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q3c')">D. Đường zigzag</button>
+        </div>
+        <div id="q3c" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 4 -->
+<div class="chapter ch4" id="ch4">
+  <div class="ch-header" onclick="toggle(this)">
+    <div class="ch-num">4</div>
+    <div class="ch-title">
+      <h2>LÝ LUẬN NHẬN THỨC DUY VẬT BIỆN CHỨNG</h2>
+      <p>Thực tiễn · Nhận thức · Con đường biện chứng của nhận thức</p>
+    </div>
+    <div class="ch-arrow">▼</div>
+  </div>
+  <div class="ch-body">
+
+    <div class="section-title">I. Thực tiễn và vai trò của thực tiễn</div>
+
+    <div class="concept-block">
+      <div class="term">Thực tiễn là gì?</div>
+      <div class="def">Thực tiễn là toàn bộ <strong>hoạt động vật chất có mục đích, mang tính lịch sử–xã hội</strong> của con người nhằm cải tạo tự nhiên và xã hội. Bao gồm 3 hình thức:<br>
+      1. Hoạt động sản xuất vật chất (cơ bản nhất)<br>
+      2. Hoạt động chính trị–xã hội<br>
+      3. Hoạt động thực nghiệm khoa học</div>
+    </div>
+
+    <div class="concept-block">
+      <div class="term">4 vai trò của thực tiễn đối với nhận thức</div>
+      <div class="def">
+        1. Thực tiễn là <strong>cơ sở, nguồn gốc</strong> của nhận thức<br>
+        2. Thực tiễn là <strong>động lực</strong> của nhận thức (đặt ra yêu cầu)<br>
+        3. Thực tiễn là <strong>mục đích</strong> của nhận thức (nhận thức để phục vụ thực tiễn)<br>
+        4. Thực tiễn là <strong>tiêu chuẩn kiểm tra chân lý</strong>
+      </div>
+    </div>
+
+    <div class="key-point">Thực tiễn là tiêu chuẩn của chân lý — chỉ có đưa vào thực tiễn kiểm nghiệm mới biết tri thức đúng hay sai.</div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ: Thực tiễn kiểm tra chân lý</div>
+      Các nhà khoa học đề xuất lý thuyết vaccine COVID-19. Nhưng chỉ khi vaccine được thử nghiệm lâm sàng thực tế → kết quả thống kê → mới biết vaccine có hiệu quả không. Thực tiễn (thử nghiệm lâm sàng) là tiêu chuẩn kiểm tra chân lý (lý thuyết vaccine).
+    </div>
+
+    <div class="section-title">II. Con đường biện chứng của nhận thức</div>
+
+    <div class="concept-block">
+      <div class="term">Công thức Lênin</div>
+      <div class="def">"Từ <strong>trực quan sinh động</strong> đến <strong>tư duy trừu tượng</strong> và từ tư duy trừu tượng đến <strong>thực tiễn</strong> — đó là con đường biện chứng của sự nhận thức chân lý, của sự nhận thức hiện thực khách quan."</div>
+    </div>
+
+    <table>
+      <tr><th>Giai đoạn</th><th>Đặc điểm</th><th>Ví dụ</th></tr>
+      <tr><td><strong>Nhận thức cảm tính</strong> (trực quan sinh động)</td><td>Tiếp xúc trực tiếp bằng giác quan → cảm giác, tri giác, biểu tượng. Sinh động nhưng còn bề ngoài.</td><td>Nhìn thấy quả táo: màu đỏ, hình tròn, có mùi thơm</td></tr>
+      <tr><td><strong>Nhận thức lý tính</strong> (tư duy trừu tượng)</td><td>Dùng tư duy để khái quát, trừu tượng hóa → khái niệm, phán đoán, suy lý. Sâu hơn nhưng xa thực tế hơn.</td><td>Biết táo chứa vitamin C, chất xơ, có lợi cho sức khỏe</td></tr>
+      <tr><td><strong>Thực tiễn</strong></td><td>Đưa tri thức vào thực tiễn để kiểm chứng và phục vụ cuộc sống</td><td>Ăn táo mỗi ngày, nghiên cứu chiết xuất vitamin C từ táo</td></tr>
+    </table>
+
+    <div class="section-title">III. Chân lý</div>
+
+    <div class="concept-block">
+      <div class="term">Chân lý là gì?</div>
+      <div class="def">Chân lý là <strong>những tri thức phù hợp với hiện thực khách quan</strong> và đã được thực tiễn kiểm nghiệm. Chân lý có tính: khách quan, tuyệt đối, tương đối, cụ thể.</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Chân lý tuyệt đối và tương đối</div>
+      <strong>Tương đối:</strong> "Trái đất là trung tâm vũ trụ" — từng đúng với nhận thức thời cổ đại.<br>
+      <strong>Tuyệt đối:</strong> "Trái đất quay quanh mặt trời" — đúng tuyệt đối (đã kiểm nghiệm).<br>
+      Nhận thức của con người tiến gần đến chân lý tuyệt đối qua nhiều giai đoạn chân lý tương đối.
+    </div>
+
+    <button class="quiz-btn" onclick="showQuiz('q4')">📝 Câu hỏi trắc nghiệm Chương 4</button>
+    <div id="q4" class="quiz-section" style="display:none">
+      <div class="quiz-q">
+        <div>Câu 1: Vai trò quan trọng nhất của thực tiễn đối với nhận thức là?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q4a')">A. Động lực của nhận thức</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q4a')">B. Mục đích của nhận thức</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q4a')">C. Tiêu chuẩn của chân lý</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q4a')">D. Cơ sở của nhận thức</button>
+        </div>
+        <div id="q4a" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 2: Hình thức hoạt động thực tiễn nào là cơ bản nhất?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, true, 'q4b')">A. Hoạt động sản xuất vật chất</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q4b')">B. Hoạt động chính trị–xã hội</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q4b')">C. Hoạt động thực nghiệm khoa học</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q4b')">D. Hoạt động giáo dục</button>
+        </div>
+        <div id="q4b" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 5 -->
+<div class="chapter ch5" id="ch5">
+  <div class="ch-header" onclick="toggle(this)">
+    <div class="ch-num">5</div>
+    <div class="ch-title">
+      <h2>CHỦ NGHĨA DUY VẬT LỊCH SỬ: SẢN XUẤT VẬT CHẤT VÀ CSHT–KTTT</h2>
+      <p>Sản xuất vật chất · LLSX–QHSX · Cơ sở hạ tầng–Kiến trúc thượng tầng</p>
+    </div>
+    <div class="ch-arrow">▼</div>
+  </div>
+  <div class="ch-body">
+
+    <div class="section-title">I. Sản xuất vật chất — nền tảng của đời sống xã hội</div>
+
+    <div class="concept-block">
+      <div class="term">Phương thức sản xuất</div>
+      <div class="def">Là cách thức con người thực hiện sản xuất vật chất ở mỗi giai đoạn lịch sử nhất định. Gồm 2 yếu tố:<br>
+      <strong>LLSX</strong> (Lực lượng sản xuất) + <strong>QHSX</strong> (Quan hệ sản xuất)</div>
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Lực lượng sản xuất (LLSX)</div>
+      <div class="def">
+        Biểu hiện mối quan hệ giữa con người với tự nhiên trong quá trình sản xuất. Gồm:<br>
+        • <strong>Người lao động</strong> (với kinh nghiệm, kỹ năng, tri thức)<br>
+        • <strong>Tư liệu sản xuất</strong> = Đối tượng lao động + Tư liệu lao động (trong đó <em>công cụ lao động</em> là quan trọng nhất)
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Quan hệ sản xuất (QHSX)</div>
+      <div class="def">
+        Là quan hệ giữa người với người trong quá trình sản xuất. Gồm 3 mặt:<br>
+        • Quan hệ <strong>sở hữu</strong> tư liệu sản xuất (quan trọng nhất)<br>
+        • Quan hệ <strong>tổ chức, quản lý</strong> sản xuất<br>
+        • Quan hệ <strong>phân phối</strong> sản phẩm
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ phân biệt LLSX và QHSX</div>
+      <strong>Nhà máy dệt may:</strong><br>
+      LLSX = Công nhân + Máy dệt + Vải nguyên liệu<br>
+      QHSX = Ông chủ sở hữu nhà máy (quan hệ sở hữu) + Giám đốc điều hành công nhân (quan hệ quản lý) + Lương trả cho công nhân (quan hệ phân phối)
+    </div>
+
+    <div class="section-title">II. Quy luật LLSX–QHSX (Quy luật quan trọng nhất!)</div>
+
+    <div class="concept-block">
+      <div class="term">Nội dung quy luật</div>
+      <div class="def">
+        • LLSX quyết định QHSX (LLSX phát triển → QHSX phải thay đổi cho phù hợp)<br>
+        • QHSX tác động trở lại LLSX: khi phù hợp → thúc đẩy LLSX; khi không phù hợp → kìm hãm LLSX<br>
+        • <em>"Mâu thuẫn giữa LLSX và QHSX là nguồn gốc của các cuộc cách mạng xã hội"</em>
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ: Từ phong kiến sang tư bản</div>
+      Cuối thời phong kiến, kỹ thuật máy móc phát triển (LLSX phát triển), nhưng QHSX phong kiến (lãnh chúa–nông nô, sản xuất nhỏ lẻ) không phù hợp → mâu thuẫn → cách mạng tư sản → QHSX tư bản mới (sở hữu tư nhân, thuê lao động tự do) ra đời, phù hợp hơn.
+    </div>
+
+    <div class="section-title">III. Cơ sở hạ tầng – Kiến trúc thượng tầng</div>
+
+    <div class="concept-block">
+      <div class="term">Cơ sở hạ tầng (CSHT)</div>
+      <div class="def">Là <strong>toàn bộ các quan hệ sản xuất</strong> hợp thành cơ cấu kinh tế của một xã hội nhất định. CSHT = tổng hợp các QHSX thống trị + QHSX tàn dư (của thời kỳ trước) + QHSX mầm mống (của thời kỳ tới).</div>
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Kiến trúc thượng tầng (KTTT)</div>
+      <div class="def">Là <strong>toàn bộ những quan điểm, tư tưởng xã hội</strong> và những <strong>thiết chế tương ứng</strong> (nhà nước, pháp luật, đảng phái, giáo hội, tổ chức xã hội...) được hình thành trên cơ sở hạ tầng nhất định.</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ CSHT – KTTT</div>
+      <strong>Xã hội tư bản:</strong><br>
+      CSHT = Quan hệ sản xuất tư bản chủ nghĩa (tư hữu tư liệu sản xuất, thuê lao động)<br>
+      KTTT = Nhà nước tư sản + Pháp luật bảo vệ tư hữu + Tư tưởng tự do cạnh tranh + Nhà thờ + Đảng tư sản...
+    </div>
+
+    <div class="key-point">CSHT quyết định KTTT. KTTT tác động trở lại CSHT: khi phù hợp → bảo vệ, củng cố CSHT; khi không phù hợp → kìm hãm CSHT phát triển.</div>
+
+    <button class="quiz-btn" onclick="showQuiz('q5')">📝 Câu hỏi trắc nghiệm Chương 5</button>
+    <div id="q5" class="quiz-section" style="display:none">
+      <div class="quiz-q">
+        <div>Câu 1: Trong Quan hệ sản xuất, quan hệ nào là quan trọng nhất?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, true, 'q5a')">A. Quan hệ sở hữu tư liệu sản xuất</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q5a')">B. Quan hệ tổ chức, quản lý sản xuất</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q5a')">C. Quan hệ phân phối sản phẩm</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q5a')">D. Quan hệ trao đổi hàng hóa</button>
+        </div>
+        <div id="q5a" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 2: Cơ sở hạ tầng là gì?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q5b')">A. Toàn bộ lực lượng sản xuất của xã hội</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q5b')">B. Toàn bộ các quan hệ sản xuất hợp thành cơ cấu kinh tế của xã hội</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q5b')">C. Hệ thống nhà nước, pháp luật và tư tưởng xã hội</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q5b')">D. Hạ tầng kỹ thuật (đường, cầu, cảng)</button>
+        </div>
+        <div id="q5b" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 6 -->
+<div class="chapter ch6" id="ch6">
+  <div class="ch-header" onclick="toggle(this)">
+    <div class="ch-num">6</div>
+    <div class="ch-title">
+      <h2>GIAI CẤP, NHÀ NƯỚC VÀ CÁCH MẠNG XÃ HỘI</h2>
+      <p>Định nghĩa giai cấp · Đấu tranh giai cấp · Nhà nước · Cách mạng</p>
+    </div>
+    <div class="ch-arrow">▼</div>
+  </div>
+  <div class="ch-body">
+
+    <div class="section-title">I. Giai cấp</div>
+
+    <div class="concept-block">
+      <div class="term">Định nghĩa Giai cấp (Lênin)</div>
+      <div class="def">"Giai cấp là những tập đoàn người to lớn, khác nhau về <strong>địa vị</strong> của họ trong một hệ thống sản xuất xã hội nhất định trong lịch sử, khác nhau về <strong>quan hệ</strong> của họ (thường thì những quan hệ này được pháp luật quy định và thừa nhận) đối với tư liệu sản xuất, về <strong>vai trò</strong> của họ trong tổ chức lao động xã hội, và như vậy là khác nhau về cách thức hưởng thụ và về <strong>phần của cải xã hội</strong> ít hoặc nhiều mà họ được hưởng."</div>
+    </div>
+
+    <div class="key-point">Tiêu chí cơ bản phân biệt giai cấp: quan hệ đối với tư liệu sản xuất (ai sở hữu, ai không sở hữu). Đây là điều kiện kinh tế khách quan, không phải do ý muốn chủ quan.</div>
+
+    <div class="concept-block">
+      <div class="term">Nguồn gốc của giai cấp</div>
+      <div class="def">Giai cấp xuất hiện khi xã hội có <strong>sản xuất thặng dư</strong> (năng suất lao động tăng → có sản phẩm dư thừa → xuất hiện chiếm đoạt → bất bình đẳng → giai cấp). Giai cấp ra đời cùng với chế độ tư hữu.</div>
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Đấu tranh giai cấp</div>
+      <div class="def">Là cuộc đấu tranh giữa các giai cấp có lợi ích căn bản đối lập nhau. Đấu tranh giai cấp là <strong>động lực phát triển</strong> của xã hội có giai cấp đối kháng.</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ đấu tranh giai cấp</div>
+      Công nhân đình công đòi tăng lương, giảm giờ làm (giai cấp vô sản) ↔ Chủ doanh nghiệp muốn tối đa hóa lợi nhuận (giai cấp tư sản). Mâu thuẫn lợi ích → đấu tranh → dẫn đến cải cách luật lao động, cải thiện điều kiện làm việc.
+    </div>
+
+    <div class="section-title">II. Nhà nước</div>
+
+    <div class="concept-block">
+      <div class="term">Nguồn gốc Nhà nước</div>
+      <div class="def">Nhà nước không phải là sản phẩm vĩnh cửu của xã hội mà là sản phẩm của <strong>xã hội có giai cấp đối kháng</strong>. Nhà nước xuất hiện khi mâu thuẫn giai cấp không thể điều hòa được → cần công cụ để giai cấp thống trị duy trì sự thống trị.</div>
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Bản chất Nhà nước</div>
+      <div class="def">Nhà nước là <strong>công cụ của giai cấp thống trị</strong> dùng để duy trì sự thống trị về chính trị, kinh tế, tư tưởng đối với toàn xã hội. Nhà nước mang bản chất giai cấp.</div>
+    </div>
+
+    <table>
+      <tr><th>Đặc trưng của Nhà nước</th><th>Biểu hiện</th></tr>
+      <tr><td>Quản lý dân cư theo lãnh thổ</td><td>Chia tỉnh, huyện, xã; quản lý cư dân theo địa bàn</td></tr>
+      <tr><td>Có bộ máy quyền lực chuyên biệt</td><td>Quân đội, cảnh sát, tòa án, nhà tù</td></tr>
+      <tr><td>Thu thuế</td><td>Để duy trì bộ máy nhà nước</td></tr>
+      <tr><td>Có chủ quyền quốc gia</td><td>Độc lập với nhà nước khác</td></tr>
+    </table>
+
+    <div class="section-title">III. Cách mạng xã hội</div>
+
+    <div class="concept-block">
+      <div class="term">Cách mạng xã hội là gì?</div>
+      <div class="def">Là sự biến đổi có tính chất bước ngoặt và căn bản về <strong>chất</strong> của toàn bộ đời sống xã hội, là đỉnh cao của cuộc đấu tranh giai cấp. Cách mạng xã hội là <strong>đầu tàu của lịch sử</strong>.</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Phân biệt Cách mạng xã hội và Cải cách</div>
+      <strong>Cách mạng:</strong> Thay đổi căn bản chế độ xã hội, quyền lực nhà nước chuyển từ giai cấp này sang giai cấp khác (Cách mạng tháng 8/1945 ở Việt Nam).<br>
+      <strong>Cải cách:</strong> Thay đổi bộ phận, cải thiện trong khuôn khổ chế độ xã hội hiện có, không thay đổi bản chất giai cấp (Đổi mới kinh tế 1986 là cải cách, không phải cách mạng xã hội).
+    </div>
+
+    <button class="quiz-btn" onclick="showQuiz('q6')">📝 Câu hỏi trắc nghiệm Chương 6</button>
+    <div id="q6" class="quiz-section" style="display:none">
+      <div class="quiz-q">
+        <div>Câu 1: Tiêu chí cơ bản để phân biệt các giai cấp là?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q6a')">A. Mức thu nhập cao hay thấp</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q6a')">B. Quan hệ đối với tư liệu sản xuất</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q6a')">C. Trình độ học vấn</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q6a')">D. Địa vị xã hội và danh tiếng</button>
+        </div>
+        <div id="q6a" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 2: Nhà nước ra đời trong điều kiện nào?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q6b')">A. Khi xã hội loài người xuất hiện</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q6b')">B. Khi có nền kinh tế phát triển</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q6b')">C. Khi xã hội có giai cấp đối kháng không thể điều hòa được</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q6b')">D. Khi dân số đạt đến một ngưỡng nhất định</button>
+        </div>
+        <div id="q6b" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER 7 -->
+<div class="chapter ch7" id="ch7">
+  <div class="ch-header" onclick="toggle(this)">
+    <div class="ch-num">7</div>
+    <div class="ch-title">
+      <h2>Ý THỨC XÃ HỘI VÀ CON NGƯỜI – NHÂN TỐ SÁNG TẠO</h2>
+      <p>Tồn tại xã hội · Ý thức xã hội · Các hình thái ý thức · Con người</p>
+    </div>
+    <div class="ch-arrow">▼</div>
+  </div>
+  <div class="ch-body">
+
+    <div class="section-title">I. Tồn tại xã hội và Ý thức xã hội</div>
+
+    <div class="concept-block">
+      <div class="term">Tồn tại xã hội</div>
+      <div class="def">Là <strong>sinh hoạt vật chất và những điều kiện sinh hoạt vật chất</strong> của xã hội. Gồm: điều kiện địa lý, điều kiện dân số, và <em>phương thức sản xuất vật chất</em> (quan trọng nhất).</div>
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Ý thức xã hội</div>
+      <div class="def">Là <strong>mặt tinh thần của đời sống xã hội</strong>, bao gồm toàn bộ những quan điểm, tư tưởng, tình cảm, thói quen, phong tục tập quán của xã hội nảy sinh từ tồn tại xã hội và phản ánh tồn tại xã hội trong những giai đoạn phát triển nhất định.</div>
+    </div>
+
+    <div class="key-point">Tồn tại xã hội quyết định ý thức xã hội; ý thức xã hội phản ánh tồn tại xã hội và tác động trở lại tồn tại xã hội.</div>
+
+    <div class="section-title">II. Các hình thái ý thức xã hội</div>
+
+    <table>
+      <tr><th>Hình thái</th><th>Nội dung</th><th>Ví dụ</th></tr>
+      <tr><td><strong>Ý thức chính trị</strong></td><td>Quan điểm về nhà nước, chính đảng, quan hệ giai cấp, dân tộc, quốc tế</td><td>Chủ nghĩa Mác–Lênin, tư tưởng tự do dân chủ</td></tr>
+      <tr><td><strong>Ý thức pháp quyền</strong></td><td>Quan điểm về pháp luật, quyền và nghĩa vụ công dân</td><td>Hiến pháp, Bộ luật dân sự</td></tr>
+      <tr><td><strong>Ý thức đạo đức</strong></td><td>Hệ thống các giá trị, chuẩn mực điều chỉnh hành vi con người</td><td>Lòng hiếu thảo, trung thực, tôn trọng người khác</td></tr>
+      <tr><td><strong>Ý thức khoa học</strong></td><td>Hệ thống tri thức khoa học về tự nhiên và xã hội</td><td>Vật lý học, y học, kinh tế học</td></tr>
+      <tr><td><strong>Ý thức nghệ thuật (thẩm mỹ)</strong></td><td>Phản ánh thực tại qua hình tượng nghệ thuật</td><td>Thơ ca, âm nhạc, hội họa, điện ảnh</td></tr>
+      <tr><td><strong>Ý thức tôn giáo</strong></td><td>Niềm tin vào lực lượng siêu nhiên; hình thái ý thức đặc thù</td><td>Phật giáo, Thiên Chúa giáo, Islam</td></tr>
+      <tr><td><strong>Ý thức triết học</strong></td><td>Hệ thống quan điểm lý luận chung nhất về thế giới và vị trí con người</td><td>Chủ nghĩa duy vật biện chứng</td></tr>
+    </table>
+
+    <div class="section-title">III. Con người — chủ thể sáng tạo lịch sử</div>
+
+    <div class="concept-block">
+      <div class="term">Bản chất con người (Mác)</div>
+      <div class="def">"Bản chất con người không phải là cái trừu tượng cố hữu của cá nhân riêng lẻ. Trong tính hiện thực của nó, bản chất con người là <strong>tổng hòa các quan hệ xã hội</strong>."</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ý nghĩa câu nói của Mác</div>
+      Một người sinh ra là con người, nhưng cách họ suy nghĩ, giá trị quan, tính cách... đều bị hình thành qua các mối quan hệ xã hội: gia đình, bạn bè, văn hóa, kinh tế, thời đại. Không thể hiểu con người tách rời khỏi xã hội họ sống.
+    </div>
+
+    <div class="concept-block">
+      <div class="term">Vai trò của con người trong lịch sử</div>
+      <div class="def">
+        • Con người là <strong>chủ thể sáng tạo lịch sử</strong> — quần chúng nhân dân tạo ra của cải vật chất, đấu tranh cách mạng, sáng tạo văn hóa.<br>
+        • <strong>Quần chúng nhân dân là lực lượng sáng tạo cơ bản</strong> của lịch sử.<br>
+        • <strong>Vĩ nhân, lãnh tụ</strong> có vai trò thúc đẩy lịch sử nhưng không thể quyết định xu thế lịch sử.
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">💡 Ví dụ vai trò quần chúng và vĩ nhân</div>
+      Cách mạng tháng Tám 1945: Hồ Chí Minh và Đảng Cộng sản (vĩ nhân, lãnh tụ) đề ra đường lối đúng đắn, nhưng chính <em>hàng triệu người dân Việt Nam</em> (quần chúng) đứng lên khởi nghĩa mới làm nên thắng lợi. Không có quần chúng → lãnh tụ không thể làm được gì.
+    </div>
+
+    <button class="quiz-btn" onclick="showQuiz('q7')">📝 Câu hỏi trắc nghiệm Chương 7</button>
+    <div id="q7" class="quiz-section" style="display:none">
+      <div class="quiz-q">
+        <div>Câu 1: Nhân tố quan trọng nhất trong tồn tại xã hội là?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q7a')">A. Điều kiện địa lý tự nhiên</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q7a')">B. Điều kiện dân số</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q7a')">C. Phương thức sản xuất vật chất</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q7a')">D. Hệ thống tư tưởng</td></tr>
+        </div>
+        <div id="q7a" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 2: Theo Mác, bản chất con người là?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q7b')">A. Một sinh vật có lý trí</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q7b')">B. Sản phẩm của tự nhiên</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q7b')">C. Tổng hòa các quan hệ xã hội</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q7b')">D. Sinh vật có ngôn ngữ</button>
+        </div>
+        <div id="q7b" class="quiz-result"></div>
+      </div>
+      <div class="quiz-q">
+        <div>Câu 3: Lực lượng sáng tạo cơ bản của lịch sử là?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this, false, 'q7c')">A. Các vĩ nhân và lãnh tụ xuất chúng</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q7c')">B. Giai cấp tư sản</button>
+          <button class="quiz-opt" onclick="answer(this, true, 'q7c')">C. Quần chúng nhân dân</button>
+          <button class="quiz-opt" onclick="answer(this, false, 'q7c')">D. Đội ngũ trí thức</button>
+        </div>
+        <div id="q7c" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  Tài liệu ôn thi Triết học Mác–Lênin · Dựa trên Giáo trình Bộ GD&ĐT 2021 · Chúc bạn thi tốt! ✊
+</footer>
+
+<script>
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.ch-arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+function showQuiz(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function answer(btn, isCorrect, resultId) {
+  const parent = btn.closest('.quiz-options');
+  const buttons = parent.querySelectorAll('.quiz-opt');
+  buttons.forEach(b => b.disabled = true);
+  
+  if (isCorrect) {
+    btn.classList.add('correct');
+    document.getElementById(resultId).innerHTML = '<span style="color:#1A6B3A;font-weight:600">✅ Đúng rồi! Xuất sắc!</span>';
+  } else {
+    btn.classList.add('wrong');
+    // find correct answer
+    const allOpts = parent.querySelectorAll('.quiz-opt');
+    document.getElementById(resultId).innerHTML = '<span style="color:#C0392B;font-weight:600">❌ Chưa đúng. Xem lại lý thuyết nhé!</span>';
+  }
+}
+
+// Open first chapter by default
+document.querySelector('.ch1 .ch-header').click();
+</script>
+</body>
+</html>
